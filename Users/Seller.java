@@ -3,6 +3,7 @@ package Users;
 import java.util.ArrayList;
 
 import Products.Product;
+import Products.ProductService;
 
 public class Seller extends User {
     // instance variables
@@ -29,4 +30,5 @@ public class Seller extends User {
 
     public void viewAllProducts() {
     }
+
 }

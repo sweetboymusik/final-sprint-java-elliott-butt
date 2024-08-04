@@ -6,10 +6,13 @@ public class Product {
     private String name;
     private double price;
     private int quantity;
-    private String sellerId;
+    private int sellerId;
 
     // constructors
-    public Product(int id, String name, double price, int quantity, String sellerId) {
+    public Product() {
+    }
+
+    public Product(int id, String name, double price, int quantity, int sellerId) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -48,6 +51,14 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(int sellerId) {
+        this.sellerId = sellerId;
     }
 
     // methods
