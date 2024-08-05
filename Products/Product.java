@@ -7,17 +7,19 @@ public class Product {
     private double price;
     private int quantity;
     private int sellerId;
+    private String sellerName;
 
     // constructors
     public Product() {
     }
 
-    public Product(int id, String name, double price, int quantity, int sellerId) {
+    public Product(int id, String name, double price, int quantity, int sellerId, String sellerName) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.sellerId = sellerId;
+        this.sellerName = sellerName;
     }
 
     // getters and setters
@@ -59,6 +61,14 @@ public class Product {
 
     public void setSellerId(int sellerId) {
         this.sellerId = sellerId;
+    }
+
+    public String getSellerName() {
+        return sellerName;
+    }
+
+    public void setSellerName(String sellerName) {
+        this.sellerName = sellerName;
     }
 
     // methods

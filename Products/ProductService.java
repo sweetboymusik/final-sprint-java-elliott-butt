@@ -1,6 +1,7 @@
 package Products;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ProductService {
     // instance variables
@@ -33,12 +34,16 @@ public class ProductService {
         return productDAO.searchProducts("seller_id", sellerId);
     }
 
+    public ArrayList<Product> getProductsBySellerName(String seller) {
+        return productDAO.searchProducts("sellers.name", seller);
+    }
+
     public ArrayList<Product> getProductsByName(String name) {
-        return productDAO.searchProducts("name", name);
+        return productDAO.searchProducts("products.name", name);
     }
 
     public ArrayList<Product> getProductsById(int id) {
-        return productDAO.searchProducts("id", id);
+        return productDAO.searchProducts("products.id", id);
     }
 
     public <T> ArrayList<Product> getProductsByFieldAndSeller(String field, T value, int sellerId) {
@@ -61,5 +66,18 @@ public class ProductService {
         });
 
         return results;
+    }
+
+    public void printResults(ArrayList<Product> products, Scanner scanner) {
+        for (int i = 0; i < products.size(); i++) {
+            System.out.println((i + 1) + ". " + products.get(i).getName());
+            System.out.println("   Sale Price: $" + products.get(i).getPrice());
+            System.out.println("   In Stock:   " + products.get(i).getQuantity());
+            System.out.println("   Seller:     " + products.get(i).getSellerName());
+            System.out.println();
+        }
+
+        System.out.print("Press enter to return to previous menu...");
+        scanner.nextLine();
     }
 }

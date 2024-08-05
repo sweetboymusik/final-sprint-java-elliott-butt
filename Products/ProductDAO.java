@@ -69,11 +69,33 @@ public class ProductDAO {
     public <T> ArrayList<Product> searchProducts(String field, T value) {
         ArrayList<Product> products = new ArrayList<>();
 
-        String sql = "SELECT * FROM public.products WHERE " + field + " = ?";
+        String sql = "SELECT\n" +
+                "products.id, products.name, price, quantity, seller_id, sellers.name AS seller\n" +
+                "FROM\n" +
+                "products\n" +
+                "JOIN\n" +
+                "sellers\n" +
+                "ON sellers.id = seller_id\n" +
+                "WHERE ";
+
+        if (field == "products.name" | field == "sellers.name") {
+            sql += field + " ilike ?";
+        } else if (field == "1") {
+            sql += Integer.parseInt(field) + " = ?";
+        } else {
+            sql += field + " = ?";
+        }
 
         try (Connection conn = DatabaseConnection.getConnection()) {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setObject(1, value);
+
+            if (field == "products.name" | field == "sellers.name") {
+                preparedStatement.setObject(1, "%" + value + "%");
+            } else {
+                preparedStatement.setObject(1, value);
+            }
+
+            System.err.println(sql);
 
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -83,8 +105,9 @@ public class ProductDAO {
                 double price = rs.getDouble("price");
                 int quantity = rs.getInt("quantity");
                 int sellerId = rs.getInt("seller_id");
+                String sellerName = rs.getString("seller");
 
-                products.add(new Product(id, name, price, quantity, sellerId));
+                products.add(new Product(id, name, price, quantity, sellerId, sellerName));
             }
 
         } catch (Exception e) {
