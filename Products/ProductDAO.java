@@ -95,8 +95,6 @@ public class ProductDAO {
                 preparedStatement.setObject(1, value);
             }
 
-            System.err.println(sql);
-
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {

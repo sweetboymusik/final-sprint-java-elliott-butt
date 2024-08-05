@@ -70,10 +70,12 @@ public class ProductService {
 
     public void printResults(ArrayList<Product> products, Scanner scanner) {
         for (int i = 0; i < products.size(); i++) {
-            System.out.println((i + 1) + ". " + products.get(i).getName());
-            System.out.println("   Sale Price: $" + products.get(i).getPrice());
-            System.out.println("   In Stock:   " + products.get(i).getQuantity());
-            System.out.println("   Seller:     " + products.get(i).getSellerName());
+            String itemNumber = String.format("%02d", (i + 1));
+
+            System.out.println((itemNumber + ". " + products.get(i).getName()));
+            System.out.println("    Sale Price: $" + products.get(i).getPrice());
+            System.out.println("    In Stock:   " + products.get(i).getQuantity());
+            System.out.println("    Seller:     " + products.get(i).getSellerName());
             System.out.println();
         }
 

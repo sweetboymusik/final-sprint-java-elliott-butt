@@ -17,6 +17,7 @@ public class BuyerMenu {
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
+            scanner.nextLine();
             MainMenu.clearScreen();
 
             switch (choice) {
@@ -36,8 +37,7 @@ public class BuyerMenu {
 
     private static void browseProducts(Scanner scanner, ProductService productService) {
         ArrayList<Product> products = productService.getAllProducts();
-        // MainMenu.clearScreen();
-        System.out.println("Browse Products (" + products.size() + "): \n");
+        System.out.print("Browse Products (" + products.size() + "): \n");
         productService.printResults(products, scanner);
     }
 
@@ -93,6 +93,7 @@ public class BuyerMenu {
         System.out.print("Search: ");
 
         int choice = scanner.nextInt();
+        scanner.nextLine();
 
         ArrayList<Product> products = productService.getProductsById(choice);
 

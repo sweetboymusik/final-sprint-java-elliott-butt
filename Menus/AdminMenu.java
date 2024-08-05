@@ -45,14 +45,13 @@ public class AdminMenu {
         System.out.println("TODO: Not yet implemented");
 
         scanner.nextLine();
-
     }
 
     private static void viewProductList(Scanner scanner, ProductService productService) {
-        System.out.print("View Product List");
+        MainMenu.clearScreen();
+        System.out.print("View Product List\n");
         ArrayList<Product> products = productService.getAllProducts();
         productService.printResults(products, scanner);
-
     }
 
     private static void deleteUser(Scanner scanner, UserService userService) {
@@ -61,6 +60,5 @@ public class AdminMenu {
 
         System.out.println("Press enter to return to previous menu.");
         scanner.nextLine();
-
     }
 }
