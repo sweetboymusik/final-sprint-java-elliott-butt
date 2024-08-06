@@ -6,9 +6,45 @@ import Products.ProductService;
 import Users.UserService;
 
 public class MainMenu {
+    // helper functions
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
+    }
+
+    public static void clearPreviousLine() {
+        System.out.print("\033[1A");
+        System.out.print("\033[2K");
+    }
+
+    public static int validateUserInput(Scanner scanner, int max) {
+        int choice = -1;
+
+        while (choice < 1 || choice > max) {
+            String input = scanner.nextLine();
+
+            // check if enter is pressed by itself
+            if (input.trim().isEmpty()) {
+                MainMenu.clearPreviousLine();
+                System.out.print("Input cannot be empty. Please enter a number between 1 and " + max + ": ");
+                continue;
+            }
+
+            try {
+                choice = Integer.parseInt(input);
+
+                if (choice < 1 || choice > max) {
+                    MainMenu.clearPreviousLine();
+                    System.out.print("Invalid input. Please enter a number between 1 and " + max + ": ");
+                }
+            } catch (Exception e) {
+                scanner.nextLine();
+                MainMenu.clearPreviousLine();
+                System.out.print("Invalid input. Please enter a valid number: ");
+            }
+        }
+
+        return choice;
     }
 
     public static void main(String[] args) {
@@ -27,8 +63,7 @@ public class MainMenu {
             System.out.println("4. Exit\n");
             System.out.print("Choose an option: ");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = validateUserInput(scanner, 4);
             clearScreen();
 
             switch (choice) {
@@ -47,8 +82,6 @@ public class MainMenu {
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
-
         }
-
     }
 }

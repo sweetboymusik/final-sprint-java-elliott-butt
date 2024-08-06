@@ -51,6 +51,10 @@ public class ProductService {
         return productDAO.searchProducts("products.id", id);
     }
 
+    public ArrayList<Product> getProductsByCategoryId(int id) {
+        return productDAO.searchProducts("category_id", id);
+    }
+
     public <T> ArrayList<Product> getProductsByFieldAndSeller(String field, T value, int sellerId) {
         ArrayList<Product> results = getProductsBySellerId(sellerId);
 

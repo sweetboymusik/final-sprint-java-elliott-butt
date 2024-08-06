@@ -16,8 +16,7 @@ public class BuyerMenu {
             System.out.println("3. Back to Main Menu\n");
             System.out.print("Choose an option: ");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = MainMenu.validateUserInput(scanner, 3);
             MainMenu.clearScreen();
 
             switch (choice) {
@@ -36,9 +35,40 @@ public class BuyerMenu {
     }
 
     private static void browseProducts(Scanner scanner, ProductService productService) {
-        ArrayList<Product> products = productService.getAllProducts();
-        System.out.println("Browse Products (" + products.size() + "): \n");
-        productService.printResults(products, scanner, "buyer");
+        while (true) {
+            MainMenu.clearScreen();
+            System.out.println("Buyer Menu\n");
+            System.out.println("Browse Products\n");
+            System.out.println("1. All Products");
+            System.out.println("2. Electronics");
+            System.out.println("3. Furniture");
+            System.out.println("4. Office Supplies");
+            System.out.println("5. Fitness");
+            System.out.println("6. Kitchen");
+            System.out.println("7. Books");
+            System.out.println("8. Clothing");
+            System.out.println("9. Back to Main Menu\n");
+            System.out.print("Choose an option: ");
+
+            int choice = MainMenu.validateUserInput(scanner, 9);
+            MainMenu.clearScreen();
+            ArrayList<Product> products = new ArrayList<>();
+
+            switch (choice) {
+                case 1:
+                    products = productService.getAllProducts();
+                    break;
+                case 9:
+                    return;
+                default:
+                    products = productService.getProductsByCategoryId(choice - 1);
+                    System.out
+                            .println("Browse " + products.get(1).getCategory() + " (" + products.size() + "): \n");
+                    break;
+            }
+
+            productService.printResults(products, scanner, "buyer");
+        }
     }
 
     private static void searchProducts(Scanner scanner, ProductService productService) {
@@ -51,8 +81,7 @@ public class BuyerMenu {
             System.out.println("4. Return to Previous Menu\n");
             System.out.print("Choose an option: ");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = MainMenu.validateUserInput(scanner, 4);
             MainMenu.clearScreen();
 
             switch (choice) {
