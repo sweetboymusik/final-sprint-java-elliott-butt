@@ -1,34 +1,86 @@
 package Users;
 
-import java.util.ArrayList;
-
-import Products.Product;
-import Products.ProductService;
-
 public class Seller extends User {
-    // instance variables
-    private String sellerID;
-    private ArrayList<Product> products;
+    // instance variables (based on seller information)
+    private int sellerId;
+    private String storeName;
+    private String storeDescription;
+    private String contactNumber;
+    private String storeEmail;
+    private String url;
+    private String address;
 
     // constructors
-    public Seller(String username, String password, String email, String sellerID) {
-        super(username, password, email);
-        this.sellerID = sellerID;
-        products = new ArrayList<Product>();
+    public Seller() {
+        super("seller");
     }
 
-    // methods
-    public void addProduct(String name, double price, int quantity) {
-        // add new product
+    public Seller(int id, String username, String password, String email, int sellerId, String storeDescription,
+            String contactNumber, String storeEmail, String url, String address) {
+        super(id, username, password, email, "seller");
+
+        this.sellerId = sellerId;
+        this.storeDescription = storeDescription;
+        this.contactNumber = contactNumber;
+        this.storeEmail = storeEmail;
+        this.url = url;
+        this.address = address;
     }
 
-    public void updateProduct() {
+    // getters and setters
+    public int getSellerId() {
+        return sellerId;
     }
 
-    public void deleteProduct() {
+    public void setSellerId(int sellerId) {
+        this.sellerId = sellerId;
     }
 
-    public void viewAllProducts() {
+    public String getStoreName() {
+        return storeName;
     }
 
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
+
+    public String getStoreDescription() {
+        return storeDescription;
+    }
+
+    public void setStoreDescription(String storeDescription) {
+        this.storeDescription = storeDescription;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getStoreEmail() {
+        return storeEmail;
+    }
+
+    public void setStoreEmail(String storeEmail) {
+        this.storeEmail = storeEmail;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

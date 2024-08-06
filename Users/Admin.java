@@ -1,21 +1,12 @@
 package Users;
 
 public class Admin extends User {
-    // instance variables
-
     // constructors
-    public Admin(String username, String password, String email) {
-        super(username, password, email);
+    public Admin() {
+        super("admin");
     }
 
-    // methods
-    public void viewAllUsers() {
+    public Admin(int id, String username, String password, String email) {
+        super(id, username, password, email, "admin");
     }
-
-    public void deleteUser() {
-    }
-
-    public void viewAllProducts() {
-    }
-
 }

@@ -1,21 +1,12 @@
 package Users;
 
 public class Buyer extends User {
-    // instance variables
-
     // constructors
-    public Buyer(String username, String password, String email) {
-        super(username, password, email);
+    public Buyer() {
+        super("buyer");
     }
 
-    // methods
-    public void browseProducts() {
+    public Buyer(int id, String username, String password, String email) {
+        super(id, username, password, email, "buyer");
     }
-
-    public void searchProducts() {
-    }
-
-    public void viewProductInfo() {
-    }
-
 }
