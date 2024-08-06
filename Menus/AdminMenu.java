@@ -13,9 +13,10 @@ public class AdminMenu {
             MainMenu.clearScreen();
             System.out.println("Admin Menu\n");
             System.out.println("1. View User List");
-            System.out.println("2. View All Products");
-            System.out.println("3. Delete User");
-            System.out.println("4. Back to Main Menu\n");
+            System.out.println("2. View Seller List");
+            System.out.println("3. View Product List");
+            System.out.println("4. Delete User");
+            System.out.println("5. Back to Main Menu\n");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
@@ -27,12 +28,15 @@ public class AdminMenu {
                     viewUserList(scanner, userService);
                     break;
                 case 2:
-                    viewProductList(scanner, productService);
+                    viewSellerList(scanner, userService);
                     break;
                 case 3:
-                    deleteUser(scanner, userService);
+                    viewProductList(scanner, productService);
                     break;
                 case 4:
+                    deleteUser(scanner, userService);
+                    break;
+                case 5:
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
@@ -41,6 +45,13 @@ public class AdminMenu {
     }
 
     private static void viewUserList(Scanner scanner, UserService userService) {
+        System.out.println("View User List");
+        System.out.println("TODO: Not yet implemented");
+
+        scanner.nextLine();
+    }
+
+    private static void viewSellerList(Scanner scanner, UserService userService) {
         System.out.println("View User List");
         System.out.println("TODO: Not yet implemented");
 

@@ -38,7 +38,6 @@ public class MainMenu {
                     System.out.print("Invalid input. Please enter a number between 1 and " + max + ": ");
                 }
             } catch (Exception e) {
-                scanner.nextLine();
                 MainMenu.clearPreviousLine();
                 System.out.print("Invalid input. Please enter a valid number: ");
             }
