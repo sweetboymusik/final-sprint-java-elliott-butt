@@ -9,15 +9,15 @@ import Products.ProductService;
 public class BuyerMenu {
     public static void mainMenu(Scanner scanner, ProductService productService) {
         while (true) {
-            MainMenu.clearScreen();
+            MenuService.clearScreen();
             System.out.println("Buyer Menu\n");
             System.out.println("1. Browse Products");
             System.out.println("2. Search Products");
             System.out.println("3. Back to Main Menu\n");
             System.out.print("Choose an option: ");
 
-            int choice = MainMenu.validateUserInput(scanner, 3);
-            MainMenu.clearScreen();
+            int choice = MenuService.validateUserInput(scanner, 3);
+            MenuService.clearScreen();
 
             switch (choice) {
                 case 1:
@@ -36,7 +36,7 @@ public class BuyerMenu {
 
     private static void browseProducts(Scanner scanner, ProductService productService) {
         while (true) {
-            MainMenu.clearScreen();
+            MenuService.clearScreen();
             System.out.println("Buyer Menu\n");
             System.out.println("Browse Products\n");
             System.out.println("1. All Products");
@@ -50,8 +50,8 @@ public class BuyerMenu {
             System.out.println("9. Back to Main Menu\n");
             System.out.print("Choose an option: ");
 
-            int choice = MainMenu.validateUserInput(scanner, 9);
-            MainMenu.clearScreen();
+            int choice = MenuService.validateUserInput(scanner, 9);
+            MenuService.clearScreen();
             ArrayList<Product> products = new ArrayList<>();
 
             switch (choice) {
@@ -73,7 +73,7 @@ public class BuyerMenu {
 
     private static void searchProducts(Scanner scanner, ProductService productService) {
         while (true) {
-            MainMenu.clearScreen();
+            MenuService.clearScreen();
             System.out.println("Search Products\n");
             System.out.println("1. Search by Name");
             System.out.println("2. Search by ID");
@@ -81,8 +81,8 @@ public class BuyerMenu {
             System.out.println("4. Return to Previous Menu\n");
             System.out.print("Choose an option: ");
 
-            int choice = MainMenu.validateUserInput(scanner, 4);
-            MainMenu.clearScreen();
+            int choice = MenuService.validateUserInput(scanner, 4);
+            MenuService.clearScreen();
 
             switch (choice) {
                 case 1:
@@ -112,7 +112,7 @@ public class BuyerMenu {
 
         ArrayList<Product> products = productService.getProductsByName(choice);
 
-        MainMenu.clearScreen();
+        MenuService.clearScreen();
         System.out.println("Results for '" + choice + "' (" + products.size() + "): \n");
         productService.printResults(products, scanner, "buyer");
     }
@@ -126,7 +126,7 @@ public class BuyerMenu {
 
         ArrayList<Product> products = productService.getProductsById(choice);
 
-        MainMenu.clearScreen();
+        MenuService.clearScreen();
         System.out.println("Results for ID '" + choice + "' (" + products.size() + "): \n");
         productService.printResults(products, scanner, "buyer");
     }
@@ -139,7 +139,7 @@ public class BuyerMenu {
 
         ArrayList<Product> products = productService.getProductsBySellerName(choice);
 
-        MainMenu.clearScreen();
+        MenuService.clearScreen();
         System.out.println("Results for Seller '" + choice + "' (" + products.size() + "): \n");
         productService.printResults(products, scanner, "buyer");
     }

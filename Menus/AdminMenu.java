@@ -10,7 +10,7 @@ import Users.UserService;
 public class AdminMenu {
     public static void mainMenu(Scanner scanner, ProductService productService, UserService userService) {
         while (true) {
-            MainMenu.clearScreen();
+            MenuService.clearScreen();
             System.out.println("Admin Menu\n");
             System.out.println("1. View User List");
             System.out.println("2. View Seller List");
@@ -21,7 +21,7 @@ public class AdminMenu {
 
             int choice = scanner.nextInt();
             scanner.nextLine();
-            MainMenu.clearScreen();
+            MenuService.clearScreen();
 
             switch (choice) {
                 case 1:
@@ -59,7 +59,7 @@ public class AdminMenu {
     }
 
     private static void viewProductList(Scanner scanner, ProductService productService) {
-        MainMenu.clearScreen();
+        MenuService.clearScreen();
         System.out.println("View Product List\n");
         ArrayList<Product> products = productService.getAllProducts();
         productService.printResults(products, scanner, "admin");

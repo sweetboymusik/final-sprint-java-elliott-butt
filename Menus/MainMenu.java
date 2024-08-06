@@ -6,46 +6,7 @@ import Products.ProductService;
 import Users.UserService;
 
 public class MainMenu {
-    // helper functions
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
-    public static void clearPreviousLine() {
-        System.out.print("\033[1A");
-        System.out.print("\033[2K");
-    }
-
-    public static int validateUserInput(Scanner scanner, int max) {
-        int choice = -1;
-
-        while (choice < 1 || choice > max) {
-            String input = scanner.nextLine();
-
-            // check if enter is pressed by itself
-            if (input.trim().isEmpty()) {
-                MainMenu.clearPreviousLine();
-                System.out.print("Input cannot be empty. Please enter a number between 1 and " + max + ": ");
-                continue;
-            }
-
-            try {
-                choice = Integer.parseInt(input);
-
-                if (choice < 1 || choice > max) {
-                    MainMenu.clearPreviousLine();
-                    System.out.print("Invalid input. Please enter a number between 1 and " + max + ": ");
-                }
-            } catch (Exception e) {
-                MainMenu.clearPreviousLine();
-                System.out.print("Invalid input. Please enter a valid number: ");
-            }
-        }
-
-        return choice;
-    }
-
+    // main method
     public static void main(String[] args) {
         // set up necessary classes
         Scanner scanner = new Scanner(System.in);
@@ -54,7 +15,7 @@ public class MainMenu {
 
         // Display main menu
         while (true) {
-            clearScreen();
+            MenuService.clearScreen();
             System.out.println("Ecommerce\n");
             System.out.println("1. Admin Menu");
             System.out.println("2. Buyer Menu");
@@ -62,8 +23,8 @@ public class MainMenu {
             System.out.println("4. Exit\n");
             System.out.print("Choose an option: ");
 
-            int choice = validateUserInput(scanner, 4);
-            clearScreen();
+            int choice = MenuService.validateUserInput(scanner, 4);
+            MenuService.clearScreen();
 
             switch (choice) {
                 case 1:
