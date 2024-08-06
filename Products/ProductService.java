@@ -87,12 +87,18 @@ public class ProductService {
             System.out.println("    " + products.get(i).getDescription());
             System.out.println(
                     "    $" + products.get(i).getPrice() + " (In Stock: " + products.get(i).getQuantity() + ")");
-            System.out.println("    Sold by " + products.get(i).getSellerName());
 
             if (caller == "admin") {
-                Seller seller = userDAO.getSellerById(products.get(i).getId());
-                System.out.println("    Seller ID:  " + seller.getId());
-                System.out.println("    Seller Email:   " + seller.getEmail());
+                Seller seller = userDAO.getSellerById(products.get(i).getSellerId());
+                System.out.println();
+                System.out.println("    Seller Information:");
+                System.out.println("    " + seller.getStoreName() + " (Seller ID: " + seller.getSellerId() + ")");
+                System.out.println("    \"" + seller.getStoreDescription() + "\"");
+                System.out.println("    " + seller.getContactNumber() + ", " + seller.getStoreEmail());
+                System.out.println("    " + seller.getAddress());
+                System.out.println("    " + seller.getUrl());
+            } else {
+                System.out.println("    Sold by " + products.get(i).getSellerName());
             }
 
             System.out.println();

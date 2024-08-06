@@ -6,7 +6,6 @@ import Products.ProductService;
 import Users.UserService;
 
 public class MainMenu {
-    // main method
     public static void main(String[] args) {
         // set up necessary classes
         Scanner scanner = new Scanner(System.in);

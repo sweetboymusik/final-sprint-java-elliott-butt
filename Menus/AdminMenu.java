@@ -3,9 +3,9 @@ package Menus;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Products.Product;
 import Products.ProductService;
 import Users.UserService;
+import Users.Seller;
 
 public class AdminMenu {
     public static void mainMenu(Scanner scanner, ProductService productService, UserService userService) {
@@ -31,7 +31,7 @@ public class AdminMenu {
                     viewSellerList(scanner, userService);
                     break;
                 case 3:
-                    viewProductList(scanner, productService);
+                    MenuService.browseProducts(scanner, productService, "admin");
                     break;
                 case 4:
                     deleteUser(scanner, userService);
@@ -53,16 +53,8 @@ public class AdminMenu {
 
     private static void viewSellerList(Scanner scanner, UserService userService) {
         System.out.println("View User List");
-        System.out.println("TODO: Not yet implemented");
-
-        scanner.nextLine();
-    }
-
-    private static void viewProductList(Scanner scanner, ProductService productService) {
-        MenuService.clearScreen();
-        System.out.println("View Product List\n");
-        ArrayList<Product> products = productService.getAllProducts();
-        productService.printResults(products, scanner, "admin");
+        ArrayList<Seller> sellers = userService.getAllSellers();
+        userService.printResults(sellers, scanner);
     }
 
     private static void deleteUser(Scanner scanner, UserService userService) {

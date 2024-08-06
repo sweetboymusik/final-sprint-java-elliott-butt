@@ -1,6 +1,10 @@
 package Menus;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import Products.ProductService;
+import Products.Product;
 
 public class MenuService {
     public static void clearScreen() {
@@ -40,5 +44,41 @@ public class MenuService {
         }
 
         return choice;
+    }
+
+    public static void browseProducts(Scanner scanner, ProductService productService, String caller) {
+        while (true) {
+            MenuService.clearScreen();
+            System.out.println("Browse Products\n");
+            System.out.println("1. All Products");
+            System.out.println("2. Electronics");
+            System.out.println("3. Furniture");
+            System.out.println("4. Office Supplies");
+            System.out.println("5. Fitness");
+            System.out.println("6. Kitchen");
+            System.out.println("7. Books");
+            System.out.println("8. Clothing");
+            System.out.println("9. Back to Main Menu\n");
+            System.out.print("Choose an option: ");
+
+            int choice = MenuService.validateUserInput(scanner, 9);
+            // MenuService.clearScreen();
+            ArrayList<Product> products = new ArrayList<>();
+
+            switch (choice) {
+                case 1:
+                    products = productService.getAllProducts();
+                    break;
+                case 9:
+                    return;
+                default:
+                    products = productService.getProductsByCategoryId(choice - 1);
+                    System.out
+                            .println("Browse " + products.get(1).getCategory() + " (" + products.size() + "): \n");
+                    break;
+            }
+
+            productService.printResults(products, scanner, caller);
+        }
     }
 }
