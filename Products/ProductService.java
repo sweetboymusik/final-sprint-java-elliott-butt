@@ -3,13 +3,18 @@ package Products;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Users.UserDAO;
+import Users.Seller;
+
 public class ProductService {
     // instance variables
     private ProductDAO productDAO;
+    private UserDAO userDAO;
 
     // constructors
     public ProductService() {
         this.productDAO = new ProductDAO();
+        this.userDAO = new UserDAO();
     }
 
     // editing methods
@@ -35,7 +40,7 @@ public class ProductService {
     }
 
     public ArrayList<Product> getProductsBySellerName(String seller) {
-        return productDAO.searchProducts("sellers.name", seller);
+        return productDAO.searchProducts("seller_information.store_name", seller);
     }
 
     public ArrayList<Product> getProductsByName(String name) {
@@ -68,14 +73,24 @@ public class ProductService {
         return results;
     }
 
-    public void printResults(ArrayList<Product> products, Scanner scanner) {
+    public void printResults(ArrayList<Product> products, Scanner scanner, String caller) {
         for (int i = 0; i < products.size(); i++) {
             String itemNumber = String.format("%02d", (i + 1));
 
-            System.out.println((itemNumber + ". " + products.get(i).getName()));
-            System.out.println("    Sale Price: $" + products.get(i).getPrice());
-            System.out.println("    In Stock:   " + products.get(i).getQuantity());
-            System.out.println("    Seller:     " + products.get(i).getSellerName());
+            System.out
+                    .println(
+                            (itemNumber + ". " + products.get(i).getName()) + " (ID: " + products.get(i).getId() + ")");
+            System.out.println("    " + products.get(i).getDescription());
+            System.out.println(
+                    "    $" + products.get(i).getPrice() + " (In Stock: " + products.get(i).getQuantity() + ")");
+            System.out.println("    Sold by " + products.get(i).getSellerName());
+
+            if (caller == "admin") {
+                Seller seller = userDAO.getSellerById(products.get(i).getId());
+                System.out.println("    Seller ID:  " + seller.getId());
+                System.out.println("    Seller Email:   " + seller.getEmail());
+            }
+
             System.out.println();
         }
 

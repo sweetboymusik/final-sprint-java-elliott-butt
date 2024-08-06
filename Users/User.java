@@ -2,13 +2,19 @@ package Users;
 
 abstract class User {
     // instance variables
+    private int id;
     private String username;
     private String password;
     private String email;
     private String role;
 
     // constructors
-    public User(String username, String password, String email, String role) {
+    public User(String role) {
+        this.role = role;
+    }
+
+    public User(int id, String username, String password, String email, String role) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -16,6 +22,14 @@ abstract class User {
     }
 
     // getters and setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
     }

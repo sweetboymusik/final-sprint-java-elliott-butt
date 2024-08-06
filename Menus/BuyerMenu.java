@@ -37,8 +37,8 @@ public class BuyerMenu {
 
     private static void browseProducts(Scanner scanner, ProductService productService) {
         ArrayList<Product> products = productService.getAllProducts();
-        System.out.print("Browse Products (" + products.size() + "): \n");
-        productService.printResults(products, scanner);
+        System.out.println("Browse Products (" + products.size() + "): \n");
+        productService.printResults(products, scanner, "buyer");
     }
 
     private static void searchProducts(Scanner scanner, ProductService productService) {
@@ -85,7 +85,7 @@ public class BuyerMenu {
 
         MainMenu.clearScreen();
         System.out.println("Results for '" + choice + "' (" + products.size() + "): \n");
-        productService.printResults(products, scanner);
+        productService.printResults(products, scanner, "buyer");
     }
 
     private static void searchById(Scanner scanner, ProductService productService) {
@@ -99,7 +99,7 @@ public class BuyerMenu {
 
         MainMenu.clearScreen();
         System.out.println("Results for ID '" + choice + "' (" + products.size() + "): \n");
-        productService.printResults(products, scanner);
+        productService.printResults(products, scanner, "buyer");
     }
 
     private static void searchBySeller(Scanner scanner, ProductService productService) {
@@ -112,6 +112,6 @@ public class BuyerMenu {
 
         MainMenu.clearScreen();
         System.out.println("Results for Seller '" + choice + "' (" + products.size() + "): \n");
-        productService.printResults(products, scanner);
+        productService.printResults(products, scanner, "buyer");
     }
 }

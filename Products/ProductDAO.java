@@ -70,15 +70,19 @@ public class ProductDAO {
         ArrayList<Product> products = new ArrayList<>();
 
         String sql = "SELECT\n" +
-                "products.id, products.name, price, quantity, seller_id, sellers.name AS seller\n" +
+                "products.id, products.name, description, category_id, categories.name AS category, price, quantity, seller_id, seller_information.store_name AS seller\n"
+                +
                 "FROM\n" +
                 "products\n" +
                 "JOIN\n" +
-                "sellers\n" +
-                "ON sellers.id = seller_id\n" +
+                "seller_information\n" +
+                "ON seller_information.id = seller_id\n" +
+                "JOIN\n" +
+                "categories\n" +
+                "ON categories.id = category_id\n" +
                 "WHERE ";
 
-        if (field == "products.name" | field == "sellers.name") {
+        if (field == "products.name" | field == "seller_information.store_name") {
             sql += field + " ilike ?";
         } else if (field == "1") {
             sql += Integer.parseInt(field) + " = ?";
@@ -89,7 +93,7 @@ public class ProductDAO {
         try (Connection conn = DatabaseConnection.getConnection()) {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
 
-            if (field == "products.name" | field == "sellers.name") {
+            if (field == "products.name" | field == "seller_information.store_name") {
                 preparedStatement.setObject(1, "%" + value + "%");
             } else {
                 preparedStatement.setObject(1, value);
@@ -100,12 +104,14 @@ public class ProductDAO {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
+                String desc = rs.getString("description");
+                String category = rs.getString("category");
                 double price = rs.getDouble("price");
                 int quantity = rs.getInt("quantity");
                 int sellerId = rs.getInt("seller_id");
                 String sellerName = rs.getString("seller");
 
-                products.add(new Product(id, name, price, quantity, sellerId, sellerName));
+                products.add(new Product(id, name, desc, category, price, quantity, sellerId, sellerName));
             }
 
         } catch (Exception e) {

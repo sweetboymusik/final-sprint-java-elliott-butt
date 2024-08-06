@@ -49,9 +49,9 @@ public class AdminMenu {
 
     private static void viewProductList(Scanner scanner, ProductService productService) {
         MainMenu.clearScreen();
-        System.out.print("View Product List\n");
+        System.out.println("View Product List\n");
         ArrayList<Product> products = productService.getAllProducts();
-        productService.printResults(products, scanner);
+        productService.printResults(products, scanner, "admin");
     }
 
     private static void deleteUser(Scanner scanner, UserService userService) {
