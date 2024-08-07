@@ -32,19 +32,20 @@ public class ProductDAO {
 
     // update a product
     public void updateProduct(Product product) {
-        String sql = "UPDATE public.products SET name=?, price=?, quantity=?, seller_id=? WHERE id = ?";
+        String sql = "UPDATE public.products\n" +
+                "\tSET name=?, description=?, price=?, quantity=?\n" +
+                "\tWHERE id = ?;";
 
         try (Connection conn = DatabaseConnection.getConnection()) {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
 
             preparedStatement.setString(1, product.getName());
-            preparedStatement.setDouble(2, product.getPrice());
-            preparedStatement.setInt(3, product.getQuantity());
-            preparedStatement.setInt(4, product.getSellerId());
+            preparedStatement.setString(2, product.getDescription());
+            preparedStatement.setDouble(3, product.getPrice());
+            preparedStatement.setInt(4, product.getQuantity());
             preparedStatement.setInt(5, product.getId());
 
             preparedStatement.executeUpdate();
-            System.out.println("Item added.");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -56,11 +57,8 @@ public class ProductDAO {
 
         try (Connection conn = DatabaseConnection.getConnection()) {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-
             preparedStatement.setInt(1, product.getId());
             preparedStatement.executeUpdate();
-
-            System.out.println("Item deleted.");
         } catch (Exception e) {
             System.out.println(e);
         }

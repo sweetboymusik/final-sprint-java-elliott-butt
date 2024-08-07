@@ -18,7 +18,7 @@ public class UserService {
             userDAO.deleteUser(user);
 
             System.out.println("\nUser deleted successfully!");
-            System.out.println("Press enter to return to admin menu... ");
+            System.out.print("Press enter to return to admin menu... ");
             scanner.nextLine();
         } catch (Exception e) {
             System.out.println(e);

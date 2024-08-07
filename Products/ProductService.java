@@ -21,20 +21,34 @@ public class ProductService {
     public void addProduct(Product product, Scanner scanner) {
         try {
             productDAO.addProduct(product);
-            System.out.println("\nUser deleted successfully!");
-            System.out.println("Press enter to return to admin menu... ");
+            System.out.println("\nProduct added successfully!");
+            System.out.print("Press enter to return to seller menu... ");
             scanner.nextLine();
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    public void updateProduct(Product product) {
-        productDAO.updateProduct(product);
+    public void updateProduct(Product product, Scanner scanner) {
+        try {
+            productDAO.updateProduct(product);
+            System.out.println("\nProduct updated successfully!");
+            System.out.print("Press enter to return to seller menu... ");
+            scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
-    public void deleteProduct(Product product) {
-        productDAO.deleteProduct(product);
+    public void deleteProduct(Product product, Scanner scanner) {
+        try {
+            productDAO.deleteProduct(product);
+            System.out.println("\nProduct deleted successfully!");
+            System.out.print("Press enter to return to seller menu... ");
+            scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     // search methods
@@ -104,14 +118,18 @@ public class ProductService {
                 System.out.println("    " + seller.getContactNumber() + ", " + seller.getStoreEmail());
                 System.out.println("    " + seller.getAddress());
                 System.out.println("    " + seller.getUrl());
-            } else {
+            } else if (caller == "buyer") {
                 System.out.println("    Sold by " + products.get(i).getSellerName());
             }
 
             System.out.println();
         }
 
-        System.out.print("Press enter to return to previous menu...");
-        scanner.nextLine();
+        if (caller == "delete" || caller == "update") {
+            return;
+        } else {
+            System.out.print("Press enter to return to previous menu...");
+            scanner.nextLine();
+        }
     }
 }
