@@ -1,6 +1,6 @@
 package Users;
 
-abstract class User {
+public abstract class User {
     // instance variables
     private int id;
     private String username;
