@@ -6,6 +6,7 @@ public class Product {
     private String name;
     private String description;
     private String category;
+    private int categoryId;
     private double price;
     private int quantity;
     private int sellerId;
@@ -13,6 +14,15 @@ public class Product {
 
     // constructors
     public Product() {
+    }
+
+    public Product(String name, String description, int categoryId, double price, int quantity, int sellerId) {
+        this.name = name;
+        this.description = description;
+        this.categoryId = categoryId;
+        this.price = price;
+        this.quantity = quantity;
+        this.sellerId = sellerId;
     }
 
     public Product(int id, String name, String description, String category, double price, int quantity, int sellerId,
@@ -58,6 +68,14 @@ public class Product {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public double getPrice() {
