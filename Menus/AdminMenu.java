@@ -20,8 +20,7 @@ public class AdminMenu {
             System.out.println("5. Back to Main Menu\n");
             System.out.print("Choose an option: ");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = MenuService.validateUserInput(scanner, 5);
             MenuService.clearScreen();
 
             switch (choice) {

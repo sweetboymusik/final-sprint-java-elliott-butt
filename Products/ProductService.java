@@ -18,8 +18,15 @@ public class ProductService {
     }
 
     // editing methods
-    public void addProduct(Product product) {
-        productDAO.addProduct(product);
+    public void addProduct(Product product, Scanner scanner) {
+        try {
+            productDAO.addProduct(product);
+            System.out.println("\nUser deleted successfully!");
+            System.out.println("Press enter to return to admin menu... ");
+            scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public void updateProduct(Product product) {

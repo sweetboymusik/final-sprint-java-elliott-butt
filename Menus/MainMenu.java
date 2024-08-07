@@ -3,6 +3,7 @@ package Menus;
 import java.util.Scanner;
 
 import Products.ProductService;
+import Users.Seller;
 import Users.UserService;
 
 public class MainMenu {
@@ -33,6 +34,11 @@ public class MainMenu {
                     BuyerMenu.mainMenu(scanner, productService);
                     break;
                 case 3:
+                    // need to pass in actual logged-in user
+                    Seller seller = new Seller();
+                    seller.setSellerId(2);
+
+                    SellerMenu.mainMenu(scanner, productService, userService, seller);
                     break;
                 case 4:
                     System.out.println("End Session. Thank you.");
