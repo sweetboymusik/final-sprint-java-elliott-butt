@@ -8,8 +8,5 @@ CREATE TABLE public.products (
     seller_id INT NOT NULL,
     date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	CONSTRAINT products_seller_id_fkey FOREIGN KEY (seller_id)
-	REFERENCES public.seller_information (id) MATCH SIMPLE
-	ON UPDATE NO ACTION
-	ON DELETE NO ACTION
-	NOT VALID
+	REFERENCES public.seller_information (id) ON DELETE CASCADE
 );
