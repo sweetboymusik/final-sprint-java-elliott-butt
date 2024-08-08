@@ -13,7 +13,7 @@ public class BuyerMenu {
             System.out.println("Buyer Menu\n");
             System.out.println("1. Browse Products");
             System.out.println("2. Search Products");
-            System.out.println("3. Back to Main Menu\n");
+            System.out.println("3. Logout\n");
             System.out.print("Choose an option: ");
 
             int choice = MenuService.validateUserInput(scanner, 3);

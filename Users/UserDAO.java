@@ -20,9 +20,6 @@ public class UserDAO {
         }
     }
 
-    public void deleteSeller(User user) {
-    }
-
     public ArrayList<Seller> getAllSellers() {
         String sql = "SELECT \n" +
                 "\tseller_information.id AS seller_id,\n" +
@@ -157,7 +154,18 @@ public class UserDAO {
     public <T> ArrayList<User> searchUsers(String field, T value) {
         ArrayList<User> users = new ArrayList<>();
 
-        String sql = "SELECT * FROM users WHERE ";
+        String sql = "SELECT\n" +
+                "\tusers.id,\n" +
+                "\tusername,\n" +
+                "\tpassword,\n" +
+                "\tusers.email,\n" +
+                "\trole,\n" +
+                "\tseller_information.id AS seller_ID\n" +
+                "FROM users\n" +
+                "LEFT JOIN\n" +
+                "\tseller_information\n" +
+                "\tON users.id = seller_information.user_id\n" +
+                "WHERE  ";
 
         if (field == "users.username") {
             sql += field + " ilike ?";
@@ -184,6 +192,7 @@ public class UserDAO {
                 String password = rs.getString("password");
                 String email = rs.getString("email");
                 String role = rs.getString("role");
+                int sellerId = rs.getInt("seller_id");
 
                 switch (role) {
                     case "admin":
@@ -193,9 +202,8 @@ public class UserDAO {
                         users.add(new Buyer(id, username, password, email));
                         break;
                     case "seller":
-                        users.add(new Seller(id, username, password, email));
+                        users.add(new Seller(id, username, password, email, sellerId));
                         break;
-
                     default:
                         break;
                 }

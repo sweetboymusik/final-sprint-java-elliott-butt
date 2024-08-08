@@ -17,7 +17,7 @@ public class AdminMenu {
             System.out.println("2. View Seller List");
             System.out.println("3. View Product List");
             System.out.println("4. Delete User");
-            System.out.println("5. Back to Main Menu\n");
+            System.out.println("5. Logout\n");
             System.out.print("Choose an option: ");
 
             int choice = MenuService.validateUserInput(scanner, 5);
