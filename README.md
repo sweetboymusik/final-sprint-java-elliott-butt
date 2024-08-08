@@ -88,7 +88,7 @@ In these classes, you can find the bulk of the program's user-based functionalit
 3. Retrieve all products from database.
 
 ### Class Diagram
-
+![alt text](https://github.com/sweetboymusik/final-sprint-java-elliott-butt/blob/main/Documentation/images/Class-Diagram.png)
 ###
 
 TODO: how to start/access the program
