@@ -49,6 +49,22 @@ public class UserService {
         return user;
     }
 
+    public boolean registerUser(User user, Scanner scanner) {
+        if (user.equals(null)) {
+            System.out.println("User Is Null");
+            System.out.print("Press enter to return to main menu... ");
+            scanner.nextLine();
+
+            return false;
+        }
+
+        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(hashedPassword);
+        userDAO.addUser(user);
+
+        return true;
+    }
+
     public void deleteUser(User user, Scanner scanner) {
         try {
             userDAO.deleteUser(user);
@@ -59,6 +75,25 @@ public class UserService {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public boolean registerSeller(Seller user, Scanner scanner) {
+        if (user.equals(null)) {
+            System.out.println("User Is Null");
+            System.out.print("Press enter to return to main menu... ");
+            scanner.nextLine();
+
+            return false;
+        }
+
+        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(hashedPassword);
+
+        userDAO.addUser(user);
+        int id = getUsersByUsername(user.getUsername()).get(0).getId();
+        userDAO.addSellerInformation(user, id);
+
+        return true;
     }
 
     public ArrayList<Seller> getAllSellers() {
