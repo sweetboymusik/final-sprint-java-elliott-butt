@@ -3,49 +3,73 @@ package Menus;
 import java.util.Scanner;
 
 import Products.ProductService;
-import Users.Seller;
 import Users.UserService;
+import Users.Seller;
+import Users.User;
 
 public class MainMenu {
-    public static void main(String[] args) {
-        // set up necessary classes
-        Scanner scanner = new Scanner(System.in);
-        ProductService productService = new ProductService();
-        UserService userService = new UserService();
+    // set up necessary classes
+    private static Scanner scanner = new Scanner(System.in);
+    private static ProductService productService = new ProductService();
+    private static UserService userService = new UserService();
 
-        // Display main menu
+    public static void main(String[] args) {
         while (true) {
             MenuService.clearScreen();
-            System.out.println("Ecommerce\n");
-            System.out.println("1. Admin Menu");
-            System.out.println("2. Buyer Menu");
-            System.out.println("3. Seller Menu");
-            System.out.println("4. Exit\n");
+            System.out.println("Ecommerce Program\n");
+            System.out.println("1: Login");
+            System.out.println("2: Register");
+            System.out.println("3: Exit\n");
             System.out.print("Choose an option: ");
 
-            int choice = MenuService.validateUserInput(scanner, 4);
+            int choice = MenuService.validateUserInput(scanner, 3);
             MenuService.clearScreen();
 
             switch (choice) {
                 case 1:
-                    AdminMenu.mainMenu(scanner, productService, userService);
+                    login(scanner);
                     break;
                 case 2:
-                    BuyerMenu.mainMenu(scanner, productService);
                     break;
                 case 3:
-                    // need to pass in actual logged-in user
-                    Seller seller = new Seller();
-                    seller.setSellerId(2);
+                    System.out.println("Thank you for using our program. See you next time!");
+                    return;
+                default:
+                    break;
+            }
+        }
+    }
+
+    private static void login(Scanner scanner) {
+        System.out.println("Login\n");
+
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+
+        User user = userService.authUser(username, password, scanner);
+
+        if (user != null) {
+            System.out.println("Welcome: " + user.getUsername());
+            scanner.nextLine();
+
+            switch (user.getRole()) {
+                case "admin":
+                    AdminMenu.mainMenu(scanner, productService, userService);
+                    break;
+                case "buyer":
+                    BuyerMenu.mainMenu(scanner, productService);
+                    break;
+                case "seller":
+                    Seller seller = (Seller) user;
+                    seller.getSellerId();
 
                     SellerMenu.mainMenu(scanner, productService, userService, seller);
                     break;
-                case 4:
-                    System.out.println("End Session. Thank you.");
-                    scanner.close();
-                    return;
                 default:
-                    System.out.println("Invalid choice. Please try again.");
+                    break;
             }
         }
     }

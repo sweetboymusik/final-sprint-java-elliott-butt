@@ -3,6 +3,8 @@ package Users;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 public class UserService {
     // instance variables
     private UserDAO userDAO;
@@ -13,6 +15,40 @@ public class UserService {
     }
 
     // methods
+    public User authUser(String username, String password, Scanner scanner) {
+        if (username == null || password == null) {
+            System.out.println();
+            System.out.println("User does not exist");
+            System.out.print("Press enter to return to main menu... ");
+            scanner.nextLine();
+            return null;
+        }
+
+        ArrayList<User> users = userDAO.searchUsers("users.username", username);
+
+        if (users.size() == 0) {
+            System.out.println();
+            System.out.println("No user with the username '" + username + "'.");
+            System.out.print("Press enter to return to main menu... ");
+            scanner.nextLine();
+
+            return null;
+        }
+
+        User user = users.get(0);
+
+        if (!BCrypt.checkpw(password, user.getPassword())) {
+            System.out.println();
+            System.out.println("Incorrect password.");
+            System.out.print("Press enter to return to main menu... ");
+            scanner.nextLine();
+
+            return null;
+        }
+
+        return user;
+    }
+
     public void deleteUser(User user, Scanner scanner) {
         try {
             userDAO.deleteUser(user);
