@@ -15,6 +15,10 @@ public class Seller extends User {
         super("seller");
     }
 
+    public Seller(String username, String password, String email) {
+        super(username, password, email, "seller");
+    }
+
     public Seller(int id, String username, String password, String email, int sellerId) {
         super(id, username, password, email, "seller");
         this.sellerId = sellerId;

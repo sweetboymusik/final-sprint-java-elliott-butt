@@ -8,12 +8,53 @@ import java.util.ArrayList;
 import Database.DatabaseConnection;
 
 public class UserDAO {
+    public void addUser(User user) {
+        String sql = "INSERT INTO public.users(\n" +
+                "\tusername, password, email, role)\n" +
+                "\tVALUES (?, ?, ?, ?);";
+
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getEmail());
+            preparedStatement.setString(4, user.getRole());
+
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
     public void deleteUser(User user) {
         String sql = "DELETE FROM users WHERE id = ?";
 
         try (Connection conn = DatabaseConnection.getConnection()) {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1, user.getId());
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void addSellerInformation(Seller user, int userId) {
+        String sql = "INSERT INTO public.seller_information(\n" +
+                "\tuser_id, store_name, store_description, contact_number, email, website_url, address)\n" +
+                "\tVALUES (?, ?, ?, ?, ?, ?, ?);";
+
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setString(2, user.getStoreName());
+            preparedStatement.setString(3, user.getStoreDescription());
+            preparedStatement.setString(4, user.getContactNumber());
+            preparedStatement.setString(5, user.getStoreEmail());
+            preparedStatement.setString(6, user.getUrl());
+            preparedStatement.setString(7, user.getAddress());
+
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
