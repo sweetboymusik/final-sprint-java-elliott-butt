@@ -1,10 +1,14 @@
-# Documentation
+# Java Ecommerce Platform
+
+Developed by Elliott Butt
+<br>
+Submitted 2024-08-09
 
 ## User Documentation
 
 ### Introduction
 
-This program is a console-based ecommerce platform written in Java and using PostgreSQL as a database. With it
+This program is a console-based ecommerce platform written in Java and using PostgreSQL as a database.
 
 ### Program Features
 
@@ -154,8 +158,6 @@ You can download jBCrypt from https://www.mindrot.org/projects/jBCrypt/.
 
 You can get PostgreSQL from https://jdbc.postgresql.org/download/.
 
-### Development Standards
-
 ### Database Setup
 
 This project uses PostgreSQL for it's database. You will need then postgresql.jar file (see the dependencied section).
@@ -167,3 +169,21 @@ You'll need to initialize a new database using a tool like pgAdmin or the psql C
 Repository link: https://github.com/sweetboymusik/final-sprint-java-elliott-butt
 
 You can download the source code directly through this github page or clone the repository to your local machine.
+
+## Deployment Documentation
+
+Find below instructions on how to install and run the program:
+
+1. Download all files off the GitHub Repository
+
+   Go to https://github.com/sweetboymusik/final-sprint-java-elliott-butt, create a directory anywhere on the device, and download all the files from the repository into that directory.
+
+   Alternatively, see the 'Source Code from Repo' section of this document.
+
+2. Open Menu.java in VSCode
+
+   Navigate into the Menus directory and right click on MainMenu.java and press 'open with', then find and click on Visual Studio Code.
+
+3. Start the program
+
+   On the top right of your screen you should see a play button, click that and a terminal will open on the bottom of the screen with the program running in it.
