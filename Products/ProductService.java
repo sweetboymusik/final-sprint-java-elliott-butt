@@ -120,7 +120,7 @@ public class ProductService {
                 System.out.println("    Address: " + seller.getAddress());
                 System.out.println("    Website: " + seller.getUrl());
             } else if (caller == "buyer") {
-                System.out.println("    Store: " + products.get(i).getSellerName());
+                System.out.println("    Sold by: " + products.get(i).getSellerName());
             }
 
             System.out.println();
