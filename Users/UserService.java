@@ -120,10 +120,10 @@ public class UserService {
         for (int i = 0; i < users.size(); i++) {
             String itemNumber = String.format("%02d", (i + 1));
 
-            System.out.println(itemNumber + ". User ID: " + users.get(i).getId());
-            System.out.println("    " + users.get(i).getUsername());
-            System.out.println("    " + users.get(i).getEmail());
-            System.out.println("    " + users.get(i).getRole());
+            System.out.println(itemNumber + ". " + users.get(i).getUsername());
+            System.out.println("    ID: " + users.get(i).getId());
+            System.out.println("    Email: " + users.get(i).getEmail());
+            System.out.println("    Role: " + users.get(i).getRole());
             System.out.println();
         }
 
@@ -143,12 +143,14 @@ public class UserService {
                     .println(
                             (itemNumber + ". " + sellers.get(i).getStoreName()) + " (Seller ID: "
                                     + sellers.get(i).getSellerId() + ")");
-            System.out.println("    \"" + sellers.get(i).getStoreDescription() + "\"");
-            System.out.println("    " + sellers.get(i).getStoreEmail());
-            System.out.println("    " + sellers.get(i).getContactNumber());
-            System.out.println("    " + sellers.get(i).getAddress());
-            System.out.println("    " + sellers.get(i).getUrl());
-            System.out.println("    " + sellers.get(i).getUsername());
+
+            System.out.println("    Description: \"" + sellers.get(i).getStoreDescription() + "\"");
+            System.out.println("    Contact Number: " + sellers.get(i).getContactNumber());
+            System.out.println("    Email: " + sellers.get(i).getStoreEmail());
+            System.out.println("    Address: " + sellers.get(i).getAddress());
+            System.out.println("    Website: " + sellers.get(i).getUrl());
+            System.out.println("    User: " + sellers.get(i).getUsername());
+
             System.out.println();
         }
 

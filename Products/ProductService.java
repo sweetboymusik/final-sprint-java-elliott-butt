@@ -105,21 +105,22 @@ public class ProductService {
             System.out
                     .println(
                             (itemNumber + ". " + products.get(i).getName()) + " (ID: " + products.get(i).getId() + ")");
-            System.out.println("    " + products.get(i).getDescription());
-            System.out.println(
-                    "    $" + products.get(i).getPrice() + " (In Stock: " + products.get(i).getQuantity() + ")");
+            System.out.println("    Description: \"" + products.get(i).getDescription() + "\"");
+            System.out.println("    Price: $" + products.get(i).getPrice());
+            System.out.println("    Sold by: " + products.get(i).getQuantity());
 
             if (caller == "admin") {
                 Seller seller = userDAO.getSellerById(products.get(i).getSellerId());
                 System.out.println();
                 System.out.println("    Seller Information:");
                 System.out.println("    " + seller.getStoreName() + " (Seller ID: " + seller.getSellerId() + ")");
-                System.out.println("    \"" + seller.getStoreDescription() + "\"");
-                System.out.println("    " + seller.getContactNumber() + ", " + seller.getStoreEmail());
-                System.out.println("    " + seller.getAddress());
-                System.out.println("    " + seller.getUrl());
+                System.out.println("    Description: \"" + seller.getStoreDescription() + "\"");
+                System.out.println("    Contact Number:" + seller.getContactNumber());
+                System.out.println("    Email: " + seller.getStoreEmail());
+                System.out.println("    Address: " + seller.getAddress());
+                System.out.println("    Website: " + seller.getUrl());
             } else if (caller == "buyer") {
-                System.out.println("    Sold by " + products.get(i).getSellerName());
+                System.out.println("    Store: " + products.get(i).getSellerName());
             }
 
             System.out.println();

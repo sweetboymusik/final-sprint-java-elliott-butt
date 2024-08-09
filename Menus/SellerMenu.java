@@ -76,7 +76,7 @@ public class SellerMenu {
 
         System.out.println("Add Product\n");
         System.out.println("Name: " + name);
-        System.out.println("Description: " + description);
+        System.out.println("Description: \"" + description + "\"");
         System.out.println("Price: " + price);
         System.out.println("Quantity: " + quantity);
         System.out.println("Category: " + category);
@@ -117,7 +117,7 @@ public class SellerMenu {
 
             System.out.println("Update Product\n");
             System.out.println("1. Name: " + product.getName());
-            System.out.println("2. Description: " + product.getDescription());
+            System.out.println("2. Description: \"" + product.getDescription() + "\"");
             System.out.println("3. Price: " + product.getPrice());
             System.out.println("4. Quantity: " + product.getQuantity());
             System.out.println();
@@ -142,11 +142,13 @@ public class SellerMenu {
                 case 3:
                     System.out.print("Enter new price: ");
                     double newPrice = scanner.nextDouble();
+                    scanner.nextLine();
                     product.setPrice(newPrice);
                     break;
                 case 4:
                     System.out.print("Enter new quantity: ");
                     int newQuantity = scanner.nextInt();
+                    scanner.nextLine();
                     product.setQuantity(newQuantity);
                     break;
                 default:
@@ -156,7 +158,7 @@ public class SellerMenu {
             MenuService.clearScreen();
             System.out.println("Update Product\n");
             System.out.println("Name: " + product.getName());
-            System.out.println("Description: " + product.getDescription());
+            System.out.println("Description: \"" + product.getDescription() + "\"");
             System.out.println("Price: " + product.getPrice());
             System.out.println("Quantity: " + product.getQuantity());
             System.out.println();
