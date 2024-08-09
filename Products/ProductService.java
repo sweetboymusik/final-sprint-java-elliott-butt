@@ -107,7 +107,6 @@ public class ProductService {
                             (itemNumber + ". " + products.get(i).getName()) + " (ID: " + products.get(i).getId() + ")");
             System.out.println("    Description: \"" + products.get(i).getDescription() + "\"");
             System.out.println("    Price: $" + products.get(i).getPrice());
-            System.out.println("    Sold by: " + products.get(i).getQuantity());
 
             if (caller == "admin") {
                 Seller seller = userDAO.getSellerById(products.get(i).getSellerId());

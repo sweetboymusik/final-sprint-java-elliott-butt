@@ -19,9 +19,9 @@ public class MainMenu {
         while (true) {
             MenuService.clearScreen();
             System.out.println("Ecommerce Program\n");
-            System.out.println("1: Login");
-            System.out.println("2: Register");
-            System.out.println("3: Exit\n");
+            System.out.println("1. Login");
+            System.out.println("2. Register");
+            System.out.println("3. Exit\n");
             System.out.print("Choose an option: ");
 
             int choice = MenuService.validateUserInput(scanner, 3);
