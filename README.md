@@ -51,7 +51,7 @@ These classes all represent the various types of users that can login to the pla
 3. Seller
 <!-- -->
 
-These classes all inherit from the base **User** clase. The **User** class as five fields: ID, username, password (stored as a hashed password in the databse using BCrypt), email, and role.
+These classes all inherit from the base **User** class. The **User** class as five fields: ID, username, password (stored as a hashed password in the database using BCrypt), email, and role.
 
 Only the **Seller** class has additional fields, based on their 'seller information'. Seller information is stored in a seperate table in the database. These additional fields are: sellerId, storeName, storeDescription, contactNumber, storeEmail, url, and address.
 
@@ -158,9 +158,9 @@ You can get PostgreSQL from https://jdbc.postgresql.org/download/.
 
 ### Database Setup
 
-This project uses PostgreSQL for it's database. You will need then postgresql.jar file (see the dependencied section).
+This project uses PostgreSQL for it's database. You will need then postgresql.jar file (see the dependencies section).
 
-You'll need to initialize a new database using a tool like pgAdmin or the psql CLI. You can then run the file '00-ALL.sql' file found in the _Database_ directory to create all of the necessary tables in insert mock data.
+You'll need to initialize a new database using a tool like pgAdmin or the psql CLI. You can then run the '00-ALL.sql' file found in the _Database_ directory to create all of the necessary tables and insert mock data.
 
 ### Source Code from Repo
 

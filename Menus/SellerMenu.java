@@ -45,8 +45,6 @@ public class SellerMenu {
     }
 
     private static void addProduct(Scanner scanner, ProductService productService, Seller user) {
-        // TODO
-        // validate all inputs
         System.out.println("Add Product\n");
 
         System.out.print("Enter Product Name: ");
