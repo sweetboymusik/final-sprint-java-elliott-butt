@@ -62,12 +62,14 @@ public class MenuService {
             System.out.print("Choose an option: ");
 
             int choice = MenuService.validateUserInput(scanner, 9);
-            // MenuService.clearScreen();
             ArrayList<Product> products = new ArrayList<>();
+            MenuService.clearScreen();
 
             switch (choice) {
                 case 1:
                     products = productService.getAllProducts();
+                    System.out
+                            .println("Browse All Products (" + products.size() + "): \n");
                     break;
                 case 9:
                     return;
