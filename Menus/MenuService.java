@@ -7,16 +7,20 @@ import Products.ProductService;
 import Products.Product;
 
 public class MenuService {
+    // clear console screen
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
+    // clear previous console line
     public static void clearPreviousLine() {
         System.out.print("\033[1A");
         System.out.print("\033[2K");
     }
 
+    // validate user input
+    // when presented with a numbered choice
     public static int validateUserInput(Scanner scanner, int max) {
         int choice = -1;
 
@@ -46,6 +50,8 @@ public class MenuService {
         return choice;
     }
 
+    // browse products
+    // function here because it is re-used in two different menus
     public static void browseProducts(Scanner scanner, ProductService productService, String caller) {
         while (true) {
             MenuService.clearScreen();

@@ -9,6 +9,7 @@ import Users.Seller;
 import Users.User;
 
 public class AdminMenu {
+    // main admin menu
     public static void mainMenu(Scanner scanner, ProductService productService, UserService userService) {
         while (true) {
             MenuService.clearScreen();
@@ -44,18 +45,21 @@ public class AdminMenu {
         }
     }
 
+    // view user list
     private static void viewUserList(Scanner scanner, UserService userService) {
         System.out.println("View User List\n");
         ArrayList<User> users = userService.getAllUsers();
         userService.printUserResults(users, scanner, "view");
     }
 
+    // view seller list
     private static void viewSellerList(Scanner scanner, UserService userService) {
         System.out.println("View Seller List\n");
         ArrayList<Seller> sellers = userService.getAllSellers();
         userService.printSellerResults(sellers, scanner);
     }
 
+    // delete user
     private static void deleteUser(Scanner scanner, UserService userService) {
         while (true) {
             MenuService.clearScreen();
@@ -85,6 +89,7 @@ public class AdminMenu {
         }
     }
 
+    // search by ID
     private static void searchById(Scanner scanner, UserService userService) {
         System.out.println("Search By ID\n");
         System.out.print("Search: ");
@@ -100,6 +105,7 @@ public class AdminMenu {
         deleteSelect(users, scanner, userService);
     }
 
+    // search by username
     private static void searchByUsername(Scanner scanner, UserService userService) {
         System.out.println("Search By Username\n");
         System.out.print("Search: ");
@@ -114,6 +120,7 @@ public class AdminMenu {
         deleteSelect(users, scanner, userService);
     }
 
+    // search by role
     private static void searchByRole(Scanner scanner, UserService userService) {
         System.out.println("Search By Role\n");
         System.out.println("1. Admin");
@@ -146,6 +153,7 @@ public class AdminMenu {
         deleteSelect(users, scanner, userService);
     }
 
+    // delete user select helper function
     private static void deleteSelect(ArrayList<User> users, Scanner scanner, UserService userService) {
         while (true) {
             System.out.print("Enter the number of the user you'd like to delete: ");

@@ -2,6 +2,7 @@ package Database;
 
 import java.sql.*;
 
+// connect to postgresql database
 public class DatabaseConnection {
     private static final String url = "jdbc:postgresql://localhost:5432/ecommerce";
     private static final String user = "postgres";

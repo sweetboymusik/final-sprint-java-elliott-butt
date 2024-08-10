@@ -18,6 +18,8 @@ public class ProductService {
     }
 
     // editing methods
+
+    // add a product
     public void addProduct(Product product, Scanner scanner) {
         try {
             productDAO.addProduct(product);
@@ -29,6 +31,7 @@ public class ProductService {
         }
     }
 
+    // update a product
     public void updateProduct(Product product, Scanner scanner) {
         try {
             productDAO.updateProduct(product);
@@ -40,6 +43,7 @@ public class ProductService {
         }
     }
 
+    // delete a product
     public void deleteProduct(Product product, Scanner scanner) {
         try {
             productDAO.deleteProduct(product);
@@ -98,6 +102,7 @@ public class ProductService {
         return results;
     }
 
+    // print product search results
     public void printResults(ArrayList<Product> products, Scanner scanner, String caller) {
         for (int i = 0; i < products.size(); i++) {
             String itemNumber = String.format("%02d", (i + 1));

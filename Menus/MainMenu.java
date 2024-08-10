@@ -15,6 +15,7 @@ public class MainMenu {
     private static ProductService productService = new ProductService();
     private static UserService userService = new UserService();
 
+    // main menu / main method
     public static void main(String[] args) {
         while (true) {
             MenuService.clearScreen();
@@ -43,6 +44,7 @@ public class MainMenu {
         }
     }
 
+    // login
     private static void login(Scanner scanner) {
         System.out.println("Login\n");
 
@@ -79,6 +81,7 @@ public class MainMenu {
         }
     }
 
+    // register
     private static void register(Scanner scanner) {
         System.out.println("Register\n");
 
@@ -133,6 +136,7 @@ public class MainMenu {
 
     }
 
+    // register seller helper function
     private static Seller createSellerInformation(Seller user, Scanner scanner) {
         MenuService.clearScreen();
         System.out.println("Register\n");

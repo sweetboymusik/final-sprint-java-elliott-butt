@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import Database.DatabaseConnection;
 
 public class ProductDAO {
-    // add a product
+    // INSERT - add a product
     public void addProduct(Product product) {
         String sql = "INSERT INTO public.products(\n" +
                 "\tname, description, category_id, price, quantity, seller_id)\n" +
@@ -30,7 +30,7 @@ public class ProductDAO {
         }
     }
 
-    // update a product
+    // UPDATE - update a product
     public void updateProduct(Product product) {
         String sql = "UPDATE public.products\n" +
                 "\tSET name=?, description=?, price=?, quantity=?\n" +
@@ -51,7 +51,7 @@ public class ProductDAO {
         }
     }
 
-    // delete a product
+    // DELETE - delete a product
     public void deleteProduct(Product product) {
         String sql = "DELETE FROM public.products WHERE id = ?";
 
@@ -64,7 +64,7 @@ public class ProductDAO {
         }
     }
 
-    // search function using generics
+    // SELECT - search function using generics
     public <T> ArrayList<Product> searchProducts(String field, T value) {
         ArrayList<Product> products = new ArrayList<>();
 

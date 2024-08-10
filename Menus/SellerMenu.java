@@ -9,6 +9,7 @@ import Users.UserService;
 import Users.Seller;
 
 public class SellerMenu {
+    // main seller menu
     public static void mainMenu(Scanner scanner, ProductService productService, UserService userService, Seller user) {
         while (true) {
             MenuService.clearScreen();
@@ -44,6 +45,7 @@ public class SellerMenu {
         }
     }
 
+    // add a product
     private static void addProduct(Scanner scanner, ProductService productService, Seller user) {
         System.out.println("Add Product\n");
 
@@ -102,6 +104,7 @@ public class SellerMenu {
 
     }
 
+    // update a product
     private static void updateProduct(Scanner scanner, ProductService productService, Seller user) {
         ArrayList<Product> products = productService.getProductsBySellerId(user.getSellerId());
         MenuService.clearScreen();
@@ -183,6 +186,7 @@ public class SellerMenu {
 
     }
 
+    // delete a product
     private static void deleteProduct(Scanner scanner, ProductService productService, Seller user) {
         ArrayList<Product> products = productService.getProductsBySellerId(user.getSellerId());
         MenuService.clearScreen();
@@ -222,6 +226,7 @@ public class SellerMenu {
         }
     }
 
+    // view logged-in seller's products
     private static void viewProducts(ProductService productService, Scanner scanner, Seller user) {
         ArrayList<Product> products = productService.getProductsBySellerId(user.getSellerId());
         MenuService.clearScreen();

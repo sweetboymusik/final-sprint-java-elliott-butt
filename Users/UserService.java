@@ -15,6 +15,8 @@ public class UserService {
     }
 
     // methods
+
+    // authorize a user
     public User authUser(String username, String password, Scanner scanner) {
         if (username == null || password == null) {
             System.out.println();
@@ -49,6 +51,7 @@ public class UserService {
         return user;
     }
 
+    // register a user
     public boolean registerUser(User user, Scanner scanner) {
         if (user.equals(null)) {
             System.out.println("User Is Null");
@@ -65,6 +68,7 @@ public class UserService {
         return true;
     }
 
+    // delete a user
     public void deleteUser(User user, Scanner scanner) {
         try {
             userDAO.deleteUser(user);
@@ -77,6 +81,7 @@ public class UserService {
         }
     }
 
+    // register a seller
     public boolean registerSeller(Seller user, Scanner scanner) {
         if (user.equals(null)) {
             System.out.println("User Is Null");
@@ -96,6 +101,7 @@ public class UserService {
         return true;
     }
 
+    // search functions
     public ArrayList<Seller> getAllSellers() {
         return userDAO.getAllSellers();
     }
@@ -116,6 +122,7 @@ public class UserService {
         return new ArrayList<>(userDAO.searchUsers("role", role));
     }
 
+    // print user search results
     public void printUserResults(ArrayList<User> users, Scanner scanner, String caller) {
         for (int i = 0; i < users.size(); i++) {
             String itemNumber = String.format("%02d", (i + 1));
@@ -135,6 +142,7 @@ public class UserService {
         }
     }
 
+    // print seller results
     public void printSellerResults(ArrayList<Seller> sellers, Scanner scanner) {
         for (int i = 0; i < sellers.size(); i++) {
             String itemNumber = String.format("%02d", (i + 1));

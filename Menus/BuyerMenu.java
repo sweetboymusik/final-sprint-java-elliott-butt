@@ -7,6 +7,7 @@ import Products.Product;
 import Products.ProductService;
 
 public class BuyerMenu {
+    // buyer main menu
     public static void mainMenu(Scanner scanner, ProductService productService) {
         while (true) {
             MenuService.clearScreen();
@@ -34,6 +35,7 @@ public class BuyerMenu {
         }
     }
 
+    // search products
     private static void searchProducts(Scanner scanner, ProductService productService) {
         while (true) {
             MenuService.clearScreen();
@@ -67,6 +69,7 @@ public class BuyerMenu {
         }
     }
 
+    // search product by name
     private static void searchByName(Scanner scanner, ProductService productService) {
         System.out.println("Search By Name\n");
         System.out.print("Search: ");
@@ -80,6 +83,7 @@ public class BuyerMenu {
         productService.printResults(products, scanner, "buyer");
     }
 
+    // search product by ID
     private static void searchById(Scanner scanner, ProductService productService) {
         System.out.println("Search By ID\n");
         System.out.print("Search: ");
@@ -94,6 +98,7 @@ public class BuyerMenu {
         productService.printResults(products, scanner, "buyer");
     }
 
+    // search product by seller
     private static void searchBySeller(Scanner scanner, ProductService productService) {
         System.out.println("Search By Seller\n");
         System.out.print("Search: ");

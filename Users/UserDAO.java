@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import Database.DatabaseConnection;
 
 public class UserDAO {
+    // INSERT - add a user
     public void addUser(User user) {
         String sql = "INSERT INTO public.users(\n" +
                 "\tusername, password, email, role)\n" +
@@ -27,6 +28,7 @@ public class UserDAO {
         }
     }
 
+    // DELETE - delete a user
     public void deleteUser(User user) {
         String sql = "DELETE FROM users WHERE id = ?";
 
@@ -39,6 +41,7 @@ public class UserDAO {
         }
     }
 
+    // INSERT - add seller information
     public void addSellerInformation(Seller user, int userId) {
         String sql = "INSERT INTO public.seller_information(\n" +
                 "\tuser_id, store_name, store_description, contact_number, email, website_url, address)\n" +
@@ -61,6 +64,7 @@ public class UserDAO {
         }
     }
 
+    // SELECT - get all sellers
     public ArrayList<Seller> getAllSellers() {
         String sql = "SELECT \n" +
                 "\tseller_information.id AS seller_id,\n" +
@@ -109,6 +113,7 @@ public class UserDAO {
         return sellers;
     }
 
+    // SELECT - get all users
     public ArrayList<User> getAllUsers() {
         String sql = "SELECT * FROM users";
 
@@ -144,6 +149,7 @@ public class UserDAO {
         return users;
     }
 
+    // SELECT - get seller by ID
     public Seller getSellerById(int id) {
         String sql = "SELECT \n" +
                 "\tseller_information.id AS seller_id,\n" +
@@ -191,7 +197,7 @@ public class UserDAO {
         return seller;
     }
 
-    // search function using generics
+    // SELECT - search function using generics
     public <T> ArrayList<User> searchUsers(String field, T value) {
         ArrayList<User> users = new ArrayList<>();
 
